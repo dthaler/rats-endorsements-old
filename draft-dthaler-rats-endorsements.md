@@ -1,5 +1,5 @@
 ---
-title: RATS Endorsements: CORIM vs EAT
+title: 'RATS Endorsements: CORIM vs EAT'
 abbrev: RATS Endorsements
 docname: draft-dthaler-rats-endorsements-latest
 wg: RATS Working Group
@@ -23,11 +23,6 @@ author:
   city: ""
   region: ""
   country: USA
-
-normative:
-  I-D.ietf-rats-corim: corim
-  I-D.ietf-rats-eat: eat
-  I-D.ietf-rats-concise-ta-stores: ta-stores
 
 --- abstract
 
@@ -131,7 +126,7 @@ While the above example only shows one layer within Endorsements as
 the typical case, there could be multiple layers within it, such as
 a chip added to a hardware board potentially from a different vendor.
 
-A Trust Anchor Store, as discussed in {{ta-stores}} is a special case of
+A Trust Anchor Store is a special case of
 state above, where the Reference State would be the set of trust anchors
 accepted (or rejected) by the Verifier, and the Current State would be
 a trust anchor used to sign Evidence or Endorsements.
@@ -147,17 +142,17 @@ store, which is part of the layer 0 reference state depicted above.
 
 # Concrete Formats
 
-The Entity Attestation Token (EAT) {{eat}} format is an IETF work in progress
+The Entity Attestation Token (EAT) {{!I-D.ietf-rats-eat}} format is an IETF work in progress
 for (at least) Evidence and Attestation Results, being the only two conceptual
 messages that were originally in score for standardization by the WG.  The
 EAT format is designed to express "singleton" values (meaning one value
 per component, though a value may be a list of things that exist at the same
 time on the same device, as noted earlier).
 
-The CORIM {{corim}} format is a newly-adopted format that is designed to
+The CORIM {{!I-D.ietf-rats-corim}} format is a newly-adopted format that is designed to
 express multiple values, for use by Reference Values.  Trust Anchors, as
 a type of Reference Values, can also be configured using the CORIM format
-using {{ta-stores}}.
+using {{!I-D.ietf-rats-concise-ta-stores}}.
 
 The rest of this section analyzes the applicability of each to Endorsements,
 while not precluding other (e.g., vendor-proprietary) formats as permitted
@@ -165,7 +160,7 @@ in the RATS Architecture.
 
 ## EAT
 
-{{eat}} specifies a format for a group of claimsets for current state, including
+{{!I-D.ietf-rats-eat}} specifies a format for a group of claimsets for current state, including
 Evidence and Attestation Results.  Thus EAT would be a natural format to use
 for current state in Endorsements.
 
@@ -177,7 +172,7 @@ as well as Endorsement layers generated statically by a vendor or owner of a dev
 
 ## CORIM
 
-{{corim}} specifies a format for multi-valued claims, where no single value
+{{I-D.ietf-rats-corim}} specifies a format for multi-valued claims, where no single value
 is "current" compared to others.  As such, CORIM is appropriate for desired
 state, but is not well suited to current state without duplicating the
 work of the EAT specification.
